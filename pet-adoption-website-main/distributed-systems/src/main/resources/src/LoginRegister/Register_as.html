@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Join our community</title>
+  <link rel="icon" type="image/x-icon" href="../img/cropped_circle_image.png">
+  <link rel="stylesheet" href="../mainUI.css" />
+  <link rel="stylesheet" href="./login_register.css" />
+</head>
+<body>
+
+  <div class="header">
+    <h1>Complete your registration</h1>
+    <p style="color: var(--secondary-color); font-size: 1.1rem;">Select your own role on our platform</p>
+  </div>
+
+  <main class="role-wrapper">
+    <section class="role-card" tabindex="0" data-role="user">
+      <h2>👤 User</h2>
+      <p>Search, adopt, or express interest in pets available on our platform.</p>
+    </section>
+
+    <section class="role-card" tabindex="0" data-role="vet">
+      <h2>🩺 Vet</h2>
+      <p>Provide medical care and support for animals across the platform.</p>
+    </section>
+
+    <section class="role-card" tabindex="0" data-role="shelter">
+      <h2>🏠 Shelter</h2>
+      <p>Manage pet listings, adoptions, and shelter-related activities.</p>
+    </section>
+  </main>
+
+  <div style="text-align: center; margin-top: 2rem;">
+    <button class="join-btn" id="confirmRoleBtn" disabled>Join Us</button>
+  </div>
+
+  <script type="module" src="./register_as.js"></script>
+
+</body>
+</html>

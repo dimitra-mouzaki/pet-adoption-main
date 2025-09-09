@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="./img/cropped_circle_image.png">
+    <title>Pet-Adoption Platform</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="./mainUI.css">
+    <link rel="stylesheet" href="./MainApp/homepage.css"> <!-- /MainApp -->
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-custom">
+      <div class="container">
+          <a class="navbar-brand text-white" href="./index.html">
+              <img src="./img/cropped_circle_image.png" alt="Logo" width="30" height="30" class="d-inline-block align-text-top" style="border-radius: 50%;">
+              Pet Adoption
+          </a>
+          <div id="headerRightContent" class="d-flex align-items-center"></div>
+      </div>
+    </nav>
+
+
+    <div class="container my-4 d-flex align-items-center gap-3">
+        <button class="btn btn-success btn-lg px-1 py-1" id="addPetBtn">
+            <i class="fa fa-plus me-1"></i>Add New Pet
+        </button>
+
+        <div class="dropdown">
+        <button class="btn btn-sm filter-btn dropdown-toggle" type="button" id="filtersDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+          <i class="fa-solid fa-filter"></i>
+        </button>
+        <ul class="dropdown-menu dropdown-menu-dark p-3" aria-labelledby="filtersDropdown" id="filtersMenuDropdown">
+          <!-- Type -->
+          <li class="mb-2">
+            <label class="form-label mb-1">Type</label>
+            <select id="filterType" class="form-select custom-select">
+              <option value="">All</option>
+              <option value="DOG">Dog</option>
+              <option value="CAT">Cat</option>
+              <option value="OTHER">Other</option>
+            </select>
+          </li>
+
+          <!-- Gender -->
+          <li class="mb-2">
+            <label class="form-label mb-1">Gender</label>
+            <select id="filterGender" class="form-select custom-select">
+              <option value="">All</option>
+              <option value="MALE">Male</option>
+              <option value="FEMALE">Female</option>
+            </select>
+          </li>
+
+          <!-- Age -->
+          <li class="mb-2">
+            <label class="form-label mb-1">Age Range</label>
+            <select id="filterAgeRange" class="form-select custom-select">
+              <option value="">All</option>
+              <option value="YOUNG">Young</option>
+              <option value="MIDDLE_AGED">Middle Aged</option>
+              <option value="OLD">Old</option>
+            </select>
+          </li>
+
+          <li>
+            <button class="btn w-100 apply-filter-btn" id="applyFiltersBtn">Apply Filters</button>
+          </li>
+        </ul>
+      </div>
+        <h2 class="mb-0">Available Pets</h2>
+        <select id="petFilter" class="form-select w-auto ms-auto">
+            <option value="all">All Healthy & Verified</option>
+            <option value="unhealthy">Unhealthy (For Vet)</option>
+        </select>
+
+        <button class="btn btn-warning ms-2" id="checkSheltersBtn" style="display: none;">
+            <i class="fa-solid fa-house-chimney-medical me-1"></i> Check Shelters
+        </button>
+
+        <button class="btn btn-warning ms-2" id="myAppsBtn" style="display: none;">
+            <i class="fa-solid fa-book me-1"></i> My Appointments
+        </button>
+
+        <button class="btn btn-warning ms-2" id="myRequestsBtn" style="display: none;">
+            <i class="fa-solid fa-heart me-1"></i> My Requests
+        </button>
+    </div>
+
+    <!-- Container που θα εμφανίζει shelters -->
+    <div id="sheltersContainer" class="mt-4"></div>
+
+    <!-- Containers για user adoptions και appointments -->
+    <div id="userAdoptionsContainer" class="mt-4"></div>
+    <div id="userAppointmentsContainer" class="mt-4"></div>
+    
+
+    <!-- Modal για Add Pet -->
+    <div class="modal fade" id="addPetModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <form id="addPetForm" class="modal-content shadow-lg rounded-4 border-0">
+      <div class="modal-header bg-primary text-white">
+        <h5 class="modal-title">
+          <i class="fa-solid fa-paw me-2"></i> Add New Pet
+        </h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+      </div>
+
+      <div class="modal-body">
+        <div class="row g-3">
+          <!-- Name -->
+          <div class="col-md-6">
+            <label class="form-label fw-bold">
+              <i class="fa-solid fa-signature me-1"></i> Name
+            </label>
+            <input type="text" name="name" class="form-control" placeholder="e.g. Bella" required>
+          </div>
+
+          <!-- Age -->
+          <div class="col-md-6">
+            <label class="form-label fw-bold">
+              <i class="fa-solid fa-hourglass-half me-1"></i> Age
+            </label>
+            <input type="number" name="age" class="form-control" placeholder="e.g. 2" required>
+          </div>
+
+          <!-- Animal -->
+          <div class="col-md-6">
+            <label class="form-label fw-bold">
+              <i class="fa-solid fa-dog me-1"></i> Animal
+            </label>
+            <select name="animal" class="form-select" required>
+              <option value="">-- Select Animal --</option>
+              <option value="DOG">Dog</option>
+              <option value="CAT">Cat</option>
+              <option value="OTHER">Other</option>
+            </select>
+          </div>
+
+          <!-- Breed -->
+          <div class="col-md-6">
+            <label class="form-label fw-bold">
+              <i class="fa-solid fa-dna me-1"></i> Breed
+            </label>
+            <input type="text" name="breed" class="form-control" placeholder="e.g. Golden Retriever" required>
+          </div>
+
+          <!-- Gender -->
+          <div class="col-md-6">
+            <label class="form-label fw-bold">
+              <i class="fa-solid fa-venus-mars me-1"></i> Gender
+            </label>
+            <select name="gender" class="form-select" required>
+              <option value="">-- Select Gender --</option>
+              <option value="MALE">Male</option>
+              <option value="FEMALE">Female</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal-footer d-flex justify-content-between">
+        <button type="button" class="btn btn-cancel btn-outline-secondary" data-bs-dismiss="modal">
+          <i class="fa-solid fa-xmark"></i> Cancel
+        </button>
+        <button type="submit" class="btn btn-save btn-success">
+          <i class="fa-solid fa-check"></i> Save Pet
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
+
+    <!-- Pets Display -->
+    <div class="container">
+        <div class="row" id="petCardsContainer">
+            <!-- JS is populating cards here -->
+        </div>
+    </div>
+
+    <!-- Pet template -->
+    <template id="petCardTemplate">
+        <div class="col-md-4 mb-4">
+            <div class="card h-100">
+                <img src="" class="card-img-top" alt="Pet Image">
+                <div class="card-body">
+                    <h5 class="card-title"></h5>
+                    <p class="card-text breed-text"></p>
+                    <p class="card-text age-text"></p>
+                    <p class="card-text status-text"></p>
+                    <div class="d-flex justify-content-between mt-3">
+                        <button class="btn btn-success btn-sm seemore-btn">See more information</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </template>
+
+    <!-- JS src -->
+    <script type="module" src="./MainApp/homepage.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

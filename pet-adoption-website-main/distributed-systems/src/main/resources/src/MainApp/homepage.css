@@ -1,0 +1,128 @@
+h5 {
+    color: var(--text-color);
+}
+
+.navbar-custom {
+    background-color: var(--primary-color);
+}
+
+.navbar-custom .btn {
+    color: var(--text-color);
+    border: 1px solid var(--text-color);
+}
+
+.btn:hover {
+    color: var(--buton-hover-color);
+}
+
+.card {
+    background-color: var(--card-bg-color);
+    border: 1px solid var(--divider-color);
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.3);
+    border-color: var(--primary-color);
+}
+
+.card img {
+    max-height: 150px;
+    object-fit: cover;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+}
+
+.card-body {
+    padding: 1.5rem;
+    text-align: center;
+}
+
+.card-title {
+    font-size: 1.25rem;
+    font-weight: bold;
+    color: var(--primary-color);
+}
+
+.card-text {
+    height: auto;
+    margin-bottom: 1rem;
+    color: var(--text-color);
+}
+
+.card .btn {
+    background-color: var(--primary-color);
+    color: var(--background-color);
+    border: none;
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.card .btn:hover {
+    background-color: var(--buton-hover-color);
+    transform: scale(1.05);
+}
+
+/* Dropdown Menu */
+.custom-dropdown-menu {
+    background-color: var(--card-bg-color);
+    border: 1px solid var(--divider-color);
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.custom-dropdown-menu .dropdown-item {
+    color: var(--text-color);
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.custom-dropdown-menu .dropdown-item:hover {
+    background-color: var(--button-hover-bg-color);
+    color: var(--buton-hover-color);
+}
+
+.custom-dropdown-menu .dropdown-item.active {
+    background-color: var(--primary-color);
+    color: var(--background-color);
+    font-weight: bold;
+}
+
+.custom-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 8px 16px;
+    border: 1px solid var(--divider-color);
+    background-color: var(--primary-color);
+    color: var(--text-color);
+    font-size: 1rem;
+    font-weight: bold;
+    border-radius: 6px;
+    transition: background-color 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+    cursor: pointer;
+}
+
+.custom-button i {
+    color: var(--text-color);
+    font-size: 1rem;
+}
+
+.custom-button:hover {
+    background-color: var(--button-hover-bg-color);
+    color: var(--primary-color);
+    border-color: darken(var(--divider-color), 20%);
+    transform: scale(1.05);
+}
+
+.custom-button:active {
+    background-color: darken(var(--primary-color), 15%);
+    border-color: darken(var(--divider-color), 30%);
+    transform: scale(0.9);
+}

@@ -1,0 +1,43 @@
+.card {
+  max-width: 600px;
+  background-color: var(--card-bg-color);
+  color: var(--text-color); 
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.card img {
+  max-height: 350px;
+  object-fit: cover;
+}
+
+.status-badge {
+  font-size: 1rem;
+  animation: pulseStatus 2s infinite;
+}
+
+.status-healthy {
+  background-color: #16a34a;
+  color: white;
+}
+
+.status-unhealthy {
+  background-color: #dc2626;
+  color: white;
+}
+
+.status-pending {
+  background-color: #f59e0b;
+  color: white;
+}
+
+.status-unverified {
+  background-color: #e1e429cb;
+  color: white;
+}
+
+@keyframes pulseStatus {
+  0% { opacity: 1; }
+  50% { opacity: 0.6; transform: scale(1.05); }
+  100% { opacity: 1; transform: scale(1); }
+}
